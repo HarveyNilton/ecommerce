@@ -1,0 +1,883 @@
+:root{
+    /*========== Colors ==========*/
+--first-color: hsl(354, 78%, 60%);
+--button-color: hsl(0, 0%, 17%);
+--button-color-alt: hsl(0, 0%, 21%);
+--card-color: hsl(0, 0%, 90%);
+--title-color: hsl(0, 0%, 15%);
+--text-color: hsl(0, 0%, 35%);
+--text-color-light: hsl(0, 0%, 55%);
+--body-color: hsl(206, 4%, 97%);
+--container-color: #fff;
+--border-color: hsl(0, 0%, 94%);
+
+/*========== Font and typography ==========*/
+--body-font: 'Roboto', sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  
+  /*border: 1px solid rebeccapurple;*/
+  }
+
+img{
+    width: 100%;
+}
+ 
+body{
+    font-family: var(--body-font);
+    background: var(--body-color);
+  }
+
+  body.dark{
+    --first-color: hsl(182, 53%, 74%);
+      --button-color: hsl(246, 16%, 12%);
+      --button-color-alt: hsl(0, 0%, 28%);
+      --card-color: hsla(246, 16%, 5%, .5);
+      --title-color: hsl(0, 0%, 95%);
+      --text-color: hsl(0, 0%, 75%);
+      --body-color: hsl(249, 19%, 14%);
+      --container-color: hsl(246, 16%, 12%);
+      --border-color: hsl(0, 0%, 20%);
+  }
+
+
+  .load{
+    background: white;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+
+
+.hide{
+    display: none;
+}
+
+.logo-svg{
+    animation: animationLogo 2s infinite;
+}
+
+.svg-logo{
+
+    border: none;
+    width: 100px;
+    position: relative;
+    animation: load 1.5s infinite;
+    /*animation: load 1.5s infinite;*/
+}
+/*
+.loader .svg-logo:hover{
+    animation: load 1.5s infinite;
+}*/
+
+@keyframes load{
+    0%{
+        top: 0;
+        fill: blue;
+      
+     /*transform: rotate(200deg);*/
+    }
+    50%{
+        top: -30px;
+        fill: aqua;
+        
+    }
+    100%{
+        top: 0;
+        fill: rgb(9, 255, 0);
+    }
+}
+
+
+  /*----HEADER EDIT ----------*/
+
+  .header{
+    display: flex;
+   justify-content: space-between;
+    padding: 2vmin;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--container-color);
+    box-shadow: 0 1px 4px hsl(0deg 4% 15% / 10%);
+    height: 15vmin;
+ 
+    z-index: 3;
+    
+  }
+
+  .container-nav{
+    display: flex;
+   justify-content: space-between;
+   width: 100%;
+   position: relative;
+   z-index: 3;
+  
+  }
+
+  .scroll-bg{
+   background: var(--container-color);
+  }
+
+  .nav-container-logo-menu-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5vmin;
+
+  }
+  .container-logo{
+    width: 10vmin;
+    display: flex;
+    align-content: center;
+    
+  }
+  .logo-academlo{
+    animation: animationLogo 2s infinite;
+  }
+
+  @keyframes animationLogo{
+    0%{
+        top: 0;
+        fill: red;
+        color: aqua;
+    }
+    50%{
+        top: -33;
+        fill: aqua;
+        color:rebeccapurple;
+    }
+    100%{
+        top: 0;
+        fill: rebeccapurple;
+        color: rgb(255, 0, 170);
+    }
+  }
+
+  .name-empresa{
+    font-size: 5vmin;
+    animation: animationLogo 2s infinite;
+  }
+  .ul-container-menu-item{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    gap: 1vmin;
+  }
+  .li-container-menu-item{
+    list-style: none;
+  
+  }
+  a{
+    text-decoration: none;
+  }
+  .menu-item{
+    font-size: 3.5vmin;
+    color: var(--text-color);
+    cursor: pointer;
+    
+  }
+
+  .menu-item:hover{
+    transform: scaleX(-20);
+    color: var(--first-color);
+    text-decoration: solid;
+  }
+
+  figure.desactivar-uno{
+    display: none;
+  }
+
+  /* ---- aparcer el icono luna*/
+  figure.active{
+    display: block;
+  }
+  
+  /* ---- desaparecer el icono sol*/
+
+  figure.desactive{
+    display: none;
+  }
+
+
+
+/* ---- nav container de botones-----*/
+
+.nav-container-btn-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3vmin;
+}
+
+.logo-svg{
+   fill: var(--text-color);
+}
+
+.btn-nav{
+    display: flex;
+    justify-content: center;
+    width: 7vmin;
+    position: relative;
+   
+}
+
+/* ---- boton car----*/
+.btn-car{
+    position: relative;
+}
+.num-produc-car{
+    background: white;
+    top: 5px;
+    right: 1vmin;
+    position: absolute;
+    font-size: 2vmin;
+    border-radius: 50%;
+    width: 3vmin;
+    height: 3vmin;
+    text-align: center;
+    border: 1px solid var(--text-color);
+}
+
+#btn-open-menu{
+    display: none;
+}
+
+/* --- CONTAINER MY CAR ------*/
+
+.container-car-shopping{
+
+   position: fixed;
+    top: 0px;
+    right: -700px;
+    height: 100%;
+    width: 80vmin;
+    padding: 10px;
+    transition: 0.5s linear;
+    background: var(--container-color);
+}
+div.position-cero{
+    right: 0;
+}
+.container-btn-close{
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    height: 40px;
+    
+}
+.title-car{
+    text-align: center;
+    color: var(--text-color);
+    padding: 10px;
+
+    font-size: 4.5vmin ;
+}
+
+
+.container-precio{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+.item-precio{
+    font-size: 4vmin;
+}
+
+.container-boton{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: flex-end;
+}
+.bt-checkout:hover{
+    background: var(--first-color);
+}
+.bt-checkout{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    padding: 10px;
+    gap: 1vmin;
+    background: var(--text-color-light);
+}
+.btn-container-check{
+    display: flex;
+    width: 15px;
+}
+
+.imag-shopping{
+    display: none;
+}
+
+
+/*   --- container HOME -----*/
+
+main{
+    margin-top: 14vmin;
+}
+.container-home{
+    padding: 10px;
+    
+}
+
+.container-imag-product-home{
+    display: flex;
+    justify-content: flex-end;
+ 
+    height: 50vh;
+    position: relative;
+
+ 
+    
+}
+.sub-container-imag-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    width: 40vmax;
+    height: 60vmax;
+    background: var(--first-color);
+    position: relative;
+    top: -19vmin;
+    right: -3vmin;
+    z-index: 2;
+    /*z-index: -1;*/
+}
+
+.container-description-product-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.category-product{
+    font-size: 3.5vmax;
+    color: var(--text-color);
+    
+}
+
+.title-pructo-home{
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-size: 4vmax;
+
+}
+.description-product-home{
+    color: var(--text-color-light);
+    font-size: 2.5vmax;
+}
+.precio-product-home{
+    color: var(--first-color);
+    font-size: 3.5vmax;
+}
+
+.container-boton-addCar-home{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.bt-discover-home{
+    font-size: 4vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    height: 7vmin;
+    width: 25vmin;
+    padding: 10px;
+    background: var(--text-color-light);
+}
+.bt-addt-car-home{
+    font-size: 4vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color-light);
+    height: 8.5vmin;
+    width: 30vmin;
+    padding: 10px;
+    background: var(--title-color);
+    
+}
+
+
+
+/*   --- container FILTER -----*/
+
+
+.container-filter{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30vmin, 1fr));
+    grid-gap: 10px;
+    
+    width: 60vmax;
+    margin: auto;
+    padding: 2vmin;
+}
+.container-item-filter{
+    display: flex;
+    flex-direction: column;
+   
+    align-items: center;
+
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    padding: 1vmin;
+}
+
+.title-item-filter{
+    font-size: 3vmin;
+    margin-bottom: 1vmin;
+    color: var(--title-color);
+}
+.description-item-filter{
+    font-size: 2vmin;
+    color: var(--text-color);
+}
+
+
+/*   --- container PRODUCTOS -----*/
+
+.container-productos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    padding: 10px;
+
+    
+}
+
+.container-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+   box-shadow: 2px 1px 5px 2px rebeccapurple;
+    background: var(--first-color);
+   
+}
+.container-card-imag{
+    display: flex;
+    justify-content: center;
+   
+    
+}
+
+.imag-product-card{
+
+    position: relative;
+    width: 80%;
+
+    cursor: pointer;
+    
+ 
+    
+    
+}
+
+.imag-product-card:hover{
+    animation: loadImag 1.5s infinite;
+}
+
+@keyframes loadImag{
+    0%{
+        top: 0;
+    }
+    50%{
+        top: -10px;
+    }
+    100%{
+        top: 0;
+    }
+}
+
+
+.container-descrip-produc-card{
+
+    position: relative;
+    
+    padding: 15px;
+
+ 
+
+
+}
+
+.btn-add-card{
+
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+
+   
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+
+    position: absolute;
+    top: -20px;
+    right: 20px;
+
+    border: none;
+    box-shadow: 0 1px 4px hsl(0deg 4% 15% / 10%);
+   cursor: pointer;
+
+   animation: animationLogo 2s infinite;
+}
+
+.btn-add-card:hover{
+    box-shadow: 0 1px 4px hsl(0deg 4% 15% / 10%);
+    color: var(--text-color);
+    background: var(--button-color);
+}
+
+
+
+.container-precio-produc-card{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+/*   --- CONTAINER CAR SHOPPING -----*/
+
+.container-car-product-item{
+    overflow: hidden;
+    overflow-y: scroll;
+    padding-bottom: 40px;
+    height: 90%;
+    
+}
+
+.container-produc-car-compra{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    
+}
+.container-card-shopp{
+    
+    display: flex;
+    flex-direction: row;
+   
+    border-radius: 10px;
+    padding: 5px;
+
+    box-shadow: 2px 1px 5px 2px rgb(141, 141, 141);
+    
+}
+
+.container-card-imag-shopp{
+    display: flex;
+    align-items: center;
+    width: 25%;
+}
+
+.name-product-card-shopp{
+    font-size: 2vmax;
+    color: var(--text-color);
+}
+
+.sub-total-produc{
+    font-size: 2.5vmax;
+    color: var(--text-color);
+}
+
+.container-descrip-produc-card-shopp{
+    padding: 1.5px;
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+}
+
+.container-precio-produc-card-shopp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.stock-product-card-shopp{
+    font-size: 2vmax;
+    padding: 5px;
+    color: var(--text-color);
+    border-right: 1px solid var(--button-color-alt);
+}
+.precio-product-card-shopp{
+    font-size: 2vmax;
+    color: var(--text-color);
+}
+
+
+.container-cant-produc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-cantidad{
+    width: 25px;
+    height: 25px;
+}
+
+.unidad-produc{
+    padding: 5px;
+    font-size: 2.5vmin;
+    color: var(--text-color)
+}
+
+
+.btn-remover{
+    width: 50px;
+    height: 50px;
+    color: var(--first-color);
+    font-size: 30px;
+   
+    background: none;
+    border: none;
+    
+ 
+}
+
+
+
+/* ----- FOOTER -----*/
+
+.footer{
+    background: var(--card-color);
+    color: var(--title-color);
+
+    margin-top: 10px;
+    
+}
+
+.container-conte-footer{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+
+.ul-container-foo{
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.6vmax;
+}
+
+.title-footer{
+    font-size: 2.5vmin;
+}
+.item-footer{
+
+    font-size: 2vmin;
+    color: var(--text-color-light);
+}
+.li-footer{
+    list-style: none;
+}
+.container-logos{
+    display: flex;
+    gap: 3px;
+    padding: 2px;
+}
+
+.social-logo{
+    width: 25px;
+}
+
+.maqueteador{
+    font-size: 2vmin;
+    color: var(--text-color-light);
+    text-align: center;
+}
+
+
+@media(min-width: 400px){
+    main{
+        width: 75%;
+        margin: auto; 
+        margin-top: 14vmin;
+    }
+
+    .container-conte-footer{
+        width: 75%;
+        margin: auto; 
+    }
+}
+
+@media(min-width: 760px){
+    .container-nav{
+        width: 75%;
+        margin: auto;
+    }
+
+    main{
+        width: 75%;
+        margin: auto; 
+        margin-top: 14vmin;
+    }
+    .container-home{
+       display: flex;
+       flex-direction: row-reverse;
+       height: 40vmax;
+       
+    }
+    
+    .container-imag-product-home{
+        width: 40%;
+        height: 100%;
+        position: static;
+ 
+        
+    }
+    .sub-container-imag-home{
+        width: 90%;
+        height: 100%;
+        position: static;
+        background: var(--first-color);
+        align-items: center;
+        justify-content: center;
+      
+     
+        /*z-index: -1;*/
+    }
+    
+    .container-description-product-home{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding-left: 10vmax;
+    }
+    
+    .category-product{
+        font-size: 2vmax;
+        color: var(--text-color);
+        
+    }
+    
+    .title-pructo-home{
+        color: var(--text-color);
+        text-transform: uppercase;
+        font-size: 2vmax;
+    
+    }
+    .description-product-home{
+        color: var(--text-color-light);
+        font-size: 1vmax;
+    }
+    .precio-product-home{
+        color: var(--first-color);
+        font-size: 2vmax;
+    }
+    
+    .bt-discover-home{
+        font-size: 1.5vmax;
+        height: 3vmax;
+    width: 9vmax;
+
+    }
+    .bt-addt-car-home{
+        font-size: 1.5vmax;
+        height: 4vmax;
+        width: 11vmax;
+    }
+    
+
+
+
+
+    .container-productos{
+        padding: 50px;
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+
+
+
+    .container-filter{
+        padding: 50px;
+    }
+
+
+
+
+    .name-product-card-shopp{
+        font-size: 2vmin;
+       
+    }
+    
+    .sub-total-produc{
+        font-size: 2vmin;
+      
+    }
+    
+    .stock-product-card-shopp{
+        font-size: 2vmin;
+        
+    }
+    .precio-product-card-shopp{
+        font-size: 2vmin;
+        
+    }
+
+    
+
+
+
+
+
+
+    .container-conte-footer{
+        
+        flex-direction: row;
+        justify-content: space-around;
+        
+    }
+    .title-footer{
+        font-size: 2.5vmin;
+    }
+    .item-footer{
+        font-size: 2vmin;
+        padding: 5px;
+       
+    }
+    
+
+}
+
+
+
