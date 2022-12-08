@@ -577,6 +577,15 @@ main{
     gap: 5px;
 }
 
+.precio-product-card{
+    color: var(--text-color);
+}
+.stock-product-card{
+    color: var(--text-color);
+}
+.name-product-card{
+    color: var(--text-color);
+}
 
 /*   --- CONTAINER CAR SHOPPING -----*/
 
