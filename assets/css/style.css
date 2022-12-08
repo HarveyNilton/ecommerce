@@ -245,16 +245,19 @@ body{
     position: relative;
 }
 .num-produc-car{
-    background: white;
-    top: 3px;
-    right: 1vmin;
+    background: rgb(0, 0, 0);
+   bottom: -3px;
+    right: -4px;
     position: absolute;
     font-size: 2vmin;
     border-radius: 50%;
-    width: 3vmin;
-    height: 3vmin;
-    text-align: center;
+    width: 4vmin;
+    height: 4vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid var(--text-color);
+    color: white;
 }
 
 #btn-open-menu{
