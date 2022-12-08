@@ -190,7 +190,7 @@ body{
     text-decoration: none;
   }
   .menu-item{
-    font-size: 3.5vmin;
+    font-size: 3vmin;
     color: var(--text-color);
     cursor: pointer;
     
@@ -235,7 +235,7 @@ body{
 .btn-nav{
     display: flex;
     justify-content: center;
-    width: 7vmin;
+    width: 6vmin;
     position: relative;
    
 }
