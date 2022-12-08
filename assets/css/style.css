@@ -30,7 +30,12 @@ img{
 body{
     font-family: var(--body-font);
     background: var(--body-color);
+
+  
   }
+
+
+  
 
   body.dark{
     --first-color: hsl(182, 53%, 74%);
@@ -107,6 +112,7 @@ body{
    justify-content: space-between;
     padding: 2vmin;
     position: fixed;
+   
     top: 0;
     left: 0;
     right: 0;
@@ -122,7 +128,6 @@ body{
     display: flex;
    justify-content: space-between;
    width: 100%;
-   position: relative;
    z-index: 3;
   
   }
@@ -241,7 +246,7 @@ body{
 }
 .num-produc-car{
     background: white;
-    top: 5px;
+    top: 3px;
     right: 1vmin;
     position: absolute;
     font-size: 2vmin;
@@ -433,9 +438,11 @@ main{
     grid-template-columns: repeat(auto-fill, minmax(30vmin, 1fr));
     grid-gap: 10px;
     
-    width: 60vmax;
+    width: 80%;
     margin: auto;
     padding: 2vmin;
+
+    
 }
 .container-item-filter{
     display: flex;
@@ -477,24 +484,27 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 250px;
+    width: 60vmin;
     height: 300px;
     border-radius: 10px;
    box-shadow: 2px 1px 5px 2px rebeccapurple;
-    background: var(--first-color);
+    background: var(--card-color);
+    
    
 }
 .container-card-imag{
     display: flex;
     justify-content: center;
+    align-items: center;
    
-    
+    height: 60%;
 }
 
 .imag-product-card{
 
     position: relative;
     width: 80%;
+    height: 90%;
 
     cursor: pointer;
     
@@ -527,6 +537,7 @@ main{
     padding: 15px;
 
  
+  
 
 
 }
@@ -537,12 +548,12 @@ main{
     width: 40px;
     height: 40px;
 
+    position: absolute;
    
     border: 1px solid var(--border-color);
     border-radius: 50%;
-
-    position: absolute;
-    top: -20px;
+  
+    top: 0px;
     right: 20px;
 
     border: none;
@@ -734,9 +745,16 @@ main{
         width: 75%;
         margin: auto; 
     }
+    .container-card{
+        width: 50vmin;
+        height: 300px;
+      
+        
+       
+    }
 }
 
-@media(min-width: 760px){
+@media(min-width: 760px ){
     .container-nav{
         width: 75%;
         margin: auto;
@@ -825,9 +843,16 @@ main{
         overflow: hidden;
     }
 
+    .container-card{
+        width: 40vmin;
+        height: 300px;
+       
+       
+    }
 
 
 
+    
     .container-filter{
         padding: 50px;
     }
@@ -878,6 +903,15 @@ main{
     }
     
 
+}
+
+@media(min-width: 1400px ){
+    .container-card{
+        width: 25vmin;
+        height: 300px;
+       
+       
+    }
 }
 
 
