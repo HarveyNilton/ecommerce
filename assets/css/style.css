@@ -492,7 +492,7 @@ main{
     height: 300px;
     border-radius: 10px;
    box-shadow: 2px 1px 5px 2px rebeccapurple;
-    background: var(--card-color);
+    
     
    
 }
@@ -500,15 +500,16 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-   
-    height: 60%;
+   background: var(--card-color);
+   border-radius: 10px;
+    height: 100%;
 }
 
 .imag-product-card{
 
     position: relative;
     width: 80%;
-    height: 90%;
+    height: 80%;
 
     cursor: pointer;
     

@@ -219,7 +219,10 @@ const btnCloseCarShopping = document.getElementById('btn-car-shopping-close')
 
   containerProdruc.appendChild(cardContainer)
 
+  cardContainer.id = objetProductos.id
+  //btnAddCard.id = 'btnAddCar'
 
+  btnAddCard.id = `botonCarAd${objetProductos.id}`
   imagProductCard.src = objetProductos.image
   precioProductCard.textContent = `$ ${objetProductos.price}.00`
   stcokProductCard.textContent = `Stock ${objetProductos.quantity}`
@@ -229,13 +232,60 @@ const btnCloseCarShopping = document.getElementById('btn-car-shopping-close')
 }
 
 
+/* -------- ADD PRODUCTS TO CAR------- */
+
+/*
+document.querySelectorAll('#botonAddCar').forEach(
+  button => button.addEventListener('click',()=> console.log('hola')))*/
+
+
+const ids = document.querySelectorAll('.container-card')
+const btnProd1 = document.querySelector('#botonCarAd1')
+const btnProd2 = document.getElementById('#botonCarAd2')
+const btnProd3 = document.getElementById('#botonCarAd3')
+
+btnProd1.addEventListener('click',()=>addCarProduct(1))
+
+
+const productoEnElCar = []
+function addCarProduct(itemId) {
+
+  let producSelecte = productoEnElCar.find(productos => productos.id===itemId)
+
+  if (producSelecte) {
+    
+    let index = productoEnElCar.indexOf(producSelecte)
+    productoEnElCar[index].quantitySelected++
+
+  } else {
+
+    const item = productsItem.find(item => item.id===itemId)
+    item.quantitySelected = 1
+    productoEnElCar.push(item)
+  }
+  
+  productosAddCarShopping(productoEnElCar)
+  console.log(productoEnElCar);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------ CONTAINER CAR SHOPPING*/
 
 
 const addCarShoppingPoduct = document.getElementById('container-productos-add')
 
-  productsItem.forEach(produc =>productosAddCarShopping(produc))
+ // productsItem.forEach(produc =>productosAddCarShopping(produc))
 
   function productosAddCarShopping(prodShopping) {
 
