@@ -1,4 +1,4 @@
-const productsItem = [
+const productos = [
     {
       id: 1,
       name: 'Hoodies',
@@ -25,6 +25,8 @@ const productsItem = [
     }
   ]
 
+
+  
 
   let loadComponet = ()=>{
 
@@ -125,7 +127,7 @@ const btnCloseCarShopping = document.getElementById('btn-car-shopping-close')
   containerHome.appendChild(sectionHomeDescription)
   
 
-  productsItem.forEach((productos=>home(productos)))
+  productos.forEach((productos=>home(productos)))
 
   function home(objetoProduc) {
       imagProducPrincipal.src = objetoProduc.image
@@ -144,109 +146,138 @@ const btnCloseCarShopping = document.getElementById('btn-car-shopping-close')
 
 /* ------  CONTAINER FILTER -------*/
 
-  const containerNavFilter = document.getElementById('container-filter')
+
+    const containerNavFilter = document.getElementById('container-filter')
+    
+    productos.forEach(prod =>{
+      const {id,name,category} = prod
+
+      const fragmentFilter = `<aside id="container-item-filter" class="container-item-filter">
+    <h5 class="title-item-filter" onclick="btnfiltrarProducto(${id})">${name}</h5>
+    <h6 class="description-item-filter">${category}</h6>
+  </aside>`
+
+    containerNavFilter.innerHTML += fragmentFilter
+
+    })
+
+    function btnfiltrarProducto(id) {
+      
+      
 
 
-  productsItem.forEach(prod=>filterItem(prod))
+    }
 
-  function filterItem(arrayObje) {
-    const containerNavitemFilter = document.createElement('aside')
-    const titleItemFilter = document.createElement('h5')
-    const descriptionItemFilter = document.createElement('h6')
-  
-    containerNavFilter.classList.add('container-filter')
-    containerNavitemFilter.classList.add('container-item-filter')
-    titleItemFilter.classList.add('title-item-filter')
-    descriptionItemFilter.classList.add('description-item-filter')
-  
-    containerNavitemFilter.appendChild(titleItemFilter)
-    containerNavitemFilter.appendChild(descriptionItemFilter)
-  
-    containerNavFilter.appendChild(containerNavitemFilter)
-
-    titleItemFilter.id = arrayObje.id
-    titleItemFilter.textContent = arrayObje.category
-    descriptionItemFilter.textContent=`${arrayObje.quantity} Productos`
-
-  }
+    
 
 
   /* ------  CONTAINER Productos-------*/
-
+  let carShopping =[]
   
- const containerProdruc = document.getElementById('container-productos')
+ const containerProdructos = document.querySelector('#container-productos')
+ const cantidadProduCar = document.querySelector('#cantidad-produc-car')
 
- productsItem.forEach(produc =>productos(produc))
+ document.addEventListener('DOMContentLoaded',()=>{
+      carShopping = JSON.parse(localStorage.getItem('carrito')) || []
+      mostrarProductosCarShopping()
+ })
 
-  function productos(objetProductos) {
+ productos.forEach(produc =>{
+  const {id,name,price,image,quantity} = produc
 
-  const cardContainer = document.createElement('div')
+  const fragmentItemProduct = `
+  <div class="container-card">
+                <figure class="container-card-imag">
+                    <img src="${image}" alt="" class="imag-product-card">
+                </figure>
+                <article class="container-descrip-produc-card">
+                    <button class="btn-add-card" onclick="addProductCard(${id})">+</button>
+                    <h4 class="name-product-card">${name}</h4>
+                    <div class="container-precio-produc-card">
+                        <h3 class="precio-product-card">$.${price}.00</h3>
+                        <h6 class="stock-product-card">Stock ${quantity}</h6>
+                    </div>
+                </article>
+            </div>`
+  containerProdructos.innerHTML += fragmentItemProduct
 
-  const containerImagCard = document.createElement('figure')
-  const imagProductCard =  document.createElement('img')
+ })
+
+ 
+
+
+ function addProductCard(id) {
+
+  const itemProduct = productos.find(prod => prod.id===id)
+  carShopping.push(itemProduct)
+  mostrarProductosCarShopping()
+ }
+
+
+
+// CARRITO DE COMPRA 
+
+
+ const mostrarProductosCarShopping =()=>{
+  const layoutCarShopping = document.querySelector('#container-productos-add')
+
+  layoutCarShopping.innerHTML = ''
   
-  const containerDescriptionProductCard = document.createElement('article')
-  const btnAddCard = document.createElement('button')
-  const containerPrecioProdCard = document.createElement('div')
-  const precioProductCard = document.createElement('h3')
-  const stcokProductCard = document.createElement('h6')
-  const nameProductCard = document.createElement('h4')
+  carShopping.forEach(prod =>{
+
+    const {id,name,price,image,category,quantity} = prod
+
+    const fragmentCarShopping = `<div class="container-card-shopp">
+    <figure class="container-card-imag-shopp">
+        <img src="${image}" alt="" class="imag-product-card-shopp">
+    </figure>
+
+    <article class="container-descrip-produc-card-shopp">
+        <h4 class="name-product-card-shopp">${name}</h4>
+        <div class="container-precio-produc-card-shopp">
+            <h6 class="stock-product-card-shopp">Stock ${quantity}</h6>
+            <h3 class="precio-product-card-shopp">$.${price}.00</h3> 
+        </div>
+        <h3 class="sub-total-produc"></h3>
+        <div class="container-cant-produc">
+            <button class="btn-cantidad">-</button>
+            <h3 class="unidad-produc"></h3>
+            <button class="btn-cantidad">+</button>
+        </div>
+    </article>
+    <div class="container-btn-remover">
+            <btutton class="btn-remover" onclick="elimarProductoCar(${id})"><svg class="svg-remover" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50.25 50.25" style="enable-background:new 0 0 50.25 50.25;" xml:space="preserve"><g><path d="M42.625,14.25h-35c-1.657,0-3-1.343-3-3s1.343-3,3-3h35c1.657,0,3,1.343,3,3 S44.282,14.25,42.625,14.25z"></path><g><path  d="M30.625,50.25h-10c-7.196,0-14-6.804-14-14v-17c0-1.657,1.343-3,3-3s3,1.343,3,3v17 c0,3.888,4.112,8,8,8h10c3.706,0,6-4.152,6-8v-17c0-1.657,1.343-3,3-3s3,1.343,3,3v17C42.625,43.132,38.137,50.25,30.625,50.25z"></path><path  d="M19.625,40.25c-1.657,0-3-1.343-3-3v-17c0-1.657,1.343-3,3-3s3,1.343,3,3v17 C22.625,38.907,21.282,40.25,19.625,40.25z"></path><path  d="M29.625,40.25c-1.657,0-3-1.343-3-3v-17c0-1.657,1.343-3,3-3s3,1.343,3,3v17 C32.625,38.907,31.282,40.25,29.625,40.25z"></path></g><path  d="M30.792,12.25c-1.657,0-3-1.343-3-3c0-1.792-1.458-3.25-3.25-3.25s-3.25,1.458-3.25,3.25 c0,1.657-1.343,3-3,3s-3-1.343-3-3c0-5.101,4.149-9.25,9.25-9.25s9.25,4.149,9.25,9.25C33.792,10.907,32.449,12.25,30.792,12.25z"></path></g></svg></btutton>
+        </div>
+</div> `
+
+      layoutCarShopping.innerHTML += fragmentCarShopping
+
+  })
+
+  //Contador 
+  cantidadProduCar.textContent = carShopping.length
   
-  containerProdruc.classList.add('container-productos')
-  cardContainer.classList.add('container-card')
-  containerImagCard.classList.add('container-card-imag')
-  imagProductCard.classList.add('imag-product-card')
-
-  containerDescriptionProductCard.classList.add('container-descrip-produc-card')
-  btnAddCard.classList.add('btn-add-card')
-  containerPrecioProdCard.classList.add('container-precio-produc-card')
-  precioProductCard.classList.add('precio-product-card')
-  stcokProductCard.classList.add('stock-product-card')
-  nameProductCard.classList.add('name-product-card')
-
-  containerImagCard.appendChild(imagProductCard)
-  cardContainer.appendChild(containerImagCard)
+  guardarStorage()
+ }
 
 
-  containerDescriptionProductCard.appendChild(btnAddCard)
-  containerPrecioProdCard.appendChild(precioProductCard)
-  containerPrecioProdCard.appendChild(stcokProductCard)
+ function elimarProductoCar(id) {
+  const juegoId = id
+  
+  carShopping = carShopping.filter(prod => prod.id !==juegoId)
+  mostrarProductosCarShopping()
+ }
 
-  containerDescriptionProductCard.appendChild(containerPrecioProdCard)
-  containerDescriptionProductCard.appendChild(nameProductCard)
+ function guardarStorage() {
+  localStorage.setItem('carrito', JSON.stringify(carShopping))
+ }
 
-  cardContainer.appendChild(containerDescriptionProductCard)
 
-  containerProdruc.appendChild(cardContainer)
-
-  cardContainer.id = objetProductos.id
-  //btnAddCard.id = 'btnAddCar'
-
-  btnAddCard.id = `botonCarAd${objetProductos.id}`
-  imagProductCard.src = objetProductos.image
-  precioProductCard.textContent = `$ ${objetProductos.price}.00`
-  stcokProductCard.textContent = `Stock ${objetProductos.quantity}`
-  nameProductCard.textContent = objetProductos.name
-
-  btnAddCard.innerHTML = '+'
-}
 
 
 /* -------- ADD PRODUCTS TO CAR------- */
 
 /*
-document.querySelectorAll('#botonAddCar').forEach(
-  button => button.addEventListener('click',()=> console.log('hola')))*/
-
-
-const ids = document.querySelectorAll('.container-card')
-const btnProd1 = document.querySelector('#botonCarAd1')
-const btnProd2 = document.getElementById('#botonCarAd2')
-const btnProd3 = document.getElementById('#botonCarAd3')
-
-btnProd1.addEventListener('click',()=>addCarProduct(1))
-
-
 const productoEnElCar = []
 function addCarProduct(itemId) {
 
@@ -266,7 +297,7 @@ function addCarProduct(itemId) {
   
   productosAddCarShopping(productoEnElCar)
   console.log(productoEnElCar);
-}
+}*/
 
 
 
@@ -276,95 +307,3 @@ function addCarProduct(itemId) {
 
 
 
-
-
-
-
-/* ------ CONTAINER CAR SHOPPING*/
-
-
-const addCarShoppingPoduct = document.getElementById('container-productos-add')
-
- // productsItem.forEach(produc =>productosAddCarShopping(produc))
-
-  function productosAddCarShopping(prodShopping) {
-
-  const cardContainer = document.createElement('div')
-  const containerImagCard = document.createElement('figure')
-  const imagProductCard =  document.createElement('img')
-  
-  const containerDescriptionProductCard = document.createElement('article')
-  const containerPrecioProdCard = document.createElement('div')
-  const precioProductCard = document.createElement('h3')
-  const stcokProductCard = document.createElement('h6')
-  const nameProductCard = document.createElement('h4')
-
-  const subTotalProduc = document.createElement('h3')
-
-  const containerCantidadProduct = document.createElement('div')
-  const btnMenos = document.createElement('button')
-  const itemUnidadProduc = document.createElement('h3')
-  const btnMas = document.createElement('button')
-
-  const btnDelete = document.createElement('button')
-    
-  cardContainer.classList.add('container-card-shopp')
-  containerImagCard.classList.add('container-card-imag-shopp')
-  imagProductCard.classList.add('imag-product-card-shopp')
-
-  containerDescriptionProductCard.classList.add('container-descrip-produc-card-shopp')
-  containerPrecioProdCard.classList.add('container-precio-produc-card-shopp')
-  precioProductCard.classList.add('precio-product-card-shopp')
-  stcokProductCard.classList.add('stock-product-card-shopp')
-  nameProductCard.classList.add('name-product-card-shopp')
-
-  subTotalProduc.classList.add('sub-total-produc')
-
-  containerCantidadProduct.classList.add('container-cant-produc')
-  btnMenos.classList.add('btn-cantidad')
-  itemUnidadProduc.classList.add('unidad-produc')
-  btnMas.classList.add('btn-cantidad')
-
-  btnDelete.classList.add('btn-remover')
-  
-  containerImagCard.appendChild(imagProductCard)
-  cardContainer.appendChild(containerImagCard)
-
-  containerDescriptionProductCard.appendChild(nameProductCard)
-  
-  containerPrecioProdCard.appendChild(stcokProductCard)
-  containerPrecioProdCard.appendChild(precioProductCard)
- 
-  containerDescriptionProductCard.appendChild(containerPrecioProdCard)
-
-  containerDescriptionProductCard.appendChild(subTotalProduc)
-
-  containerCantidadProduct.appendChild(btnMas)
-  containerCantidadProduct.appendChild(itemUnidadProduc)
-  containerCantidadProduct.appendChild(btnMenos)
-  
-  containerDescriptionProductCard.appendChild(containerCantidadProduct)
-
-  cardContainer.appendChild(containerDescriptionProductCard)
-  cardContainer.appendChild(btnDelete)
-
-  addCarShoppingPoduct.appendChild(cardContainer)
-
-  
- 
-
-  imagProductCard.src = prodShopping.image
-
-  nameProductCard.textContent = prodShopping.name
-  stcokProductCard.textContent = `Stock ${prodShopping.quantity}`
-  precioProductCard.textContent = `$ ${prodShopping.price}.00`
-  
-  btnMas.textContent = '+'
-  btnMenos.textContent = '-'
-  itemUnidadProduc.textContent = '10 units'
-  subTotalProduc.textContent = '$500'
-
-  btnDelete.innerHTML ='&#128465'
- 
-
-}

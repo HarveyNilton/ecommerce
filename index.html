@@ -60,7 +60,7 @@
                     <svg class="logo-svg" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.75 1c0-.414214-.3358-.75-.75-.75s-.75.335786-.75.75v2c0 .41421.3358.75.75.75s.75-.33579.75-.75z"></path><path d="m4.75216 3.69149c-.2929-.29289-.76777-.29289-1.06066 0-.2929.2929-.2929.76777 0 1.06067l1.41421 1.41421c.29289.29289.76777.29289 1.06066 0s.29289-.76777 0-1.06066z"></path><path d="m20.3085 4.75216c.2929-.2929.2929-.76777 0-1.06066-.2929-.2929-.7678-.2929-1.0607-.00001l-1.4142 1.41422c-.2929.29289-.2929.76777 0 1.06066s.7678.29289 1.0607 0z"></path><path clip-rule="evenodd" d="m12 5.25c-3.72792 0-6.75 3.02208-6.75 6.75 0 3.7279 3.02208 6.75 6.75 6.75 3.7279 0 6.75-3.0221 6.75-6.75 0-3.72792-3.0221-6.75-6.75-6.75zm-5.25 6.75c0-2.8995 2.3505-5.25 5.25-5.25s5.25 2.3505 5.25 5.25-2.3505 5.25-5.25 5.25-5.25-2.3505-5.25-5.25z"></path><path d="m1 11.25c-.414214 0-.75.3358-.75.75s.335786.75.75.75h2c.41421 0 .75-.3358.75-.75s-.33579-.75-.75-.75z"></path><path d="m21 11.25c-.4142 0-.75.3358-.75.75s.3358.75.75.75h2c.4142 0 .75-.3358.75-.75s-.3358-.75-.75-.75z"></path><path d="m6.16637 18.8943c.29289-.2929.29289-.7678 0-1.0607s-.76777-.2929-1.06066 0l-1.41421 1.4142c-.2929.2929-.2929.7678 0 1.0607.29289.2929.76776.2929 1.06066 0z"></path><path d="m18.8943 17.8336c-.2929-.2929-.7678-.2929-1.0607 0s-.2929.7678 0 1.0607l1.4142 1.4142c.2929.2929.7678.2929 1.0607 0s.2929-.7678 0-1.0607z"></path><path d="m12.75 21c0-.4142-.3358-.75-.75-.75s-.75.3358-.75.75v2c0 .4142.3358.75.75.75s.75-.3358.75-.75z"></path></g></svg>
                 </figure>
                 <figure id="btn-car-shopping" class="btn-nav">
-                    <h6 id="cantidad-produc-car" class="num-produc-car">20</h6>
+                    <h6 id="cantidad-produc-car" class="num-produc-car">0</h6>
 
                     <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g id="Shopping"><path d="M3,23H27a1,1,0,0,0,.961-.725l4-14A1,1,0,0,0,31,7H6.867L5.99.858A1,1,0,0,0,5,0H1A1,1,0,0,0,1,2H4.133c.26,1.825,2.439,17.076,2.714,19H3a3,3,0,0,0,0,6H5.351A3.464,3.464,0,0,0,5,28.5a3.5,3.5,0,0,0,7,0,3.464,3.464,0,0,0-.351-1.5h7.7A3.464,3.464,0,0,0,19,28.5a3.5,3.5,0,0,0,7,0,3.464,3.464,0,0,0-.351-1.5H30a1,1,0,0,0,0-2H3a1,1,0,0,1,0-2ZM7.153,9H29.674L26.246,21H8.867ZM10,28.5A1.5,1.5,0,1,1,8.5,27,1.5,1.5,0,0,1,10,28.5Zm14,0A1.5,1.5,0,1,1,22.5,27,1.5,1.5,0,0,1,24,28.5Z"/></g></svg>
                 </figure>
@@ -77,12 +77,15 @@
                 </figure> 
                 </div>
                 <h3 class="title-car">My Car</h3>
-                <figure id="imagen-car-shopping" class="imag-shopping">
-                    <img src="./assets/images/empty-cart.png" alt="">
-                </figure>
+                
 
                 <div class="container-car-product-item">
                     <section id="container-productos-add" class="container-produc-car-compra">
+                        <figure id="imagen-car-shopping" class="imag-shopping">
+                            <img src="./assets/images/empty-cart.png" alt="">
+                        </figure>
+
+                            
 
                 
                     </section>
@@ -124,18 +127,21 @@
 
         <!--  CONTAINER Filter  -->
 
-        <section id="container-filter">
-
-            
+        <section id="container-filter" class="container-filter">
             <aside id="container-item-filter" class="container-item-filter">
-                <h5 class="title-item-filter">Show All</h5>
+                <h5 class="title-item-filter" onclick="btnShowProduc()">Show All</h5>
                 <h6 class="description-item-filter">show all products</h6>
               </aside>
+
         </section>
 
         <!--  CONTAINER Productos  -->
 
-        <section id="container-productos"></section>
+        <section id="container-productos" class="container-productos">
+            
+
+
+        </section>
         
 
     </main>

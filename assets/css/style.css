@@ -332,10 +332,6 @@ div.position-cero{
     width: 15px;
 }
 
-.imag-shopping{
-    display: none;
-}
-
 
 /*   --- container HOME -----*/
 
@@ -614,7 +610,6 @@ main{
     
     display: flex;
     flex-direction: row;
-   
     border-radius: 10px;
     padding: 5px;
 
@@ -681,18 +676,12 @@ main{
     color: var(--text-color)
 }
 
-
-.btn-remover{
-    width: 50px;
-    height: 50px;
-    color: var(--first-color);
-    font-size: 30px;
-   
-    background: none;
-    border: none;
-    
- 
+.container-btn-remover{
+    width: 20px;
+   align-self: flex-end;
+    fill: var(--first-color);
 }
+
 
 
 
