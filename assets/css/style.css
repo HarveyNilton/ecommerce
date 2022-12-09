@@ -340,6 +340,8 @@ main{
 }
 .container-home{
     padding: 10px;
+
+   
     
 }
 
@@ -350,7 +352,8 @@ main{
     height: 50vh;
     position: relative;
 
- 
+
+    
     
 }
 .sub-container-imag-home{
@@ -367,6 +370,8 @@ main{
     right: -3vmin;
     z-index: 2;
     /*z-index: -1;*/
+
+    
 }
 
 .container-description-product-home{
@@ -459,6 +464,13 @@ main{
     font-size: 3vmin;
     margin-bottom: 1vmin;
     color: var(--title-color);
+    cursor: pointer;
+}
+.title-item-filter:hover{
+    color: var(--first-color);
+    transition: all 0.4s linear;
+    border-bottom: 5px solid rebeccapurple;
+   translate: 0px -10px;
 }
 .description-item-filter{
     font-size: 2vmin;
