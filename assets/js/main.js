@@ -250,11 +250,11 @@ btnProd1.addEventListener('click',()=>addCarProduct(1))
 const productoEnElCar = []
 function addCarProduct(itemId) {
 
-  let producSelecte = productoEnElCar.find(productos => productos.id===itemId)
+  let producSelected = productoEnElCar.find(productos => productos.id===itemId)
 
-  if (producSelecte) {
+  if (producSelected) {
     
-    let index = productoEnElCar.indexOf(producSelecte)
+    let index = productoEnElCar.indexOf(producSelected)
     productoEnElCar[index].quantitySelected++
 
   } else {
