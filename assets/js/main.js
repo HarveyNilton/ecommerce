@@ -33,7 +33,7 @@
           let loader = document.getElementById('load')
           setTimeout(() => {
             loader.classList.add('hide')
-          }, 3000);
+          }, 4000);
           
         }
         document.addEventListener('DOMContentLoaded',()=>{
@@ -125,11 +125,11 @@
           const containerNavFilter = document.getElementById('container-filter')
           
           productos.forEach(prod =>{
-            const {id,name,category} = prod
+            const {id,name,quantity} = prod
 
             const fragmentFilter = `<aside id="container-item-filter" class="container-item-filter">
           <h5 class="title-item-filter" onclick="btnfiltrarProducto(${id})">${name}</h5>
-          <h6 class="description-item-filter">${category}</h6>
+          <h6 class="description-item-filter">Stock ${quantity}</h6>
         </aside>`
 
           containerNavFilter.innerHTML += fragmentFilter
