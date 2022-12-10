@@ -240,13 +240,17 @@
 
       function addProductCard(id) {
 
-        const existe = carShopping.some(prod => prod.id ===id)
+        //som es solo para true o false
+        //const existe = carShopping.some(prod => prod.id ===id)
+        
+        const existe = carShopping.find(prod => prod.id ===id)
        // let producSelected = carShopping.find(productos => productos.id===id)
 
         if (existe) {
           
-          let index = carShopping.indexOf(producSelected)
+          let index = carShopping.indexOf(existe)
           carShopping[index].quantitySelected++
+         // carShopping[index].quantitySelected++
         
        
         } else {
@@ -272,7 +276,7 @@
         
         carShopping.forEach(prod =>{
 
-          const {id,name,price,image,category,quantity} = prod
+          const {id,name,price,image,quantitySelected,quantity} = prod
 
           const fragmentCarShopping = `<div class="container-card-shopp">
           <figure class="container-card-imag-shopp">
@@ -287,9 +291,9 @@
               </div>
               <h3 class="sub-total-produc"></h3>
               <div class="container-cant-produc">
-                  <button class="btn-cantidad">-</button>
-                  <h3 class="unidad-produc"></h3>
-                  <button class="btn-cantidad">+</button>
+                  <button onclick="btnDismin(${id})" class="btn-cantidad">-</button>
+                  <h3 class="unidad-produc">${quantitySelected} units</h3>
+                  <button onclick="btnAument(${id})" class="btn-cantidad">+</button>
               </div>
           </article>
           <div class="container-btn-remover">
@@ -318,6 +322,23 @@
         guardarStorage()
       }
 
+
+      //ME QUEDE AQUI ---- 9/12/22
+      
+      function btnDismin(id) {
+
+        console.log(id);
+        carShopping.forEach(prod => {
+           if (prod.id===id) {
+           
+           }
+        })
+        
+      }
+
+      function btnAument(id) {
+        
+      }
 
       function elimarProductoCar(id) {
         const juegoId = id
