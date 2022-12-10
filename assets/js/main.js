@@ -197,6 +197,7 @@
         
       const containerProdructos = document.querySelector('#container-productos')
       const cantidadProduCar = document.querySelector('#cantidad-produc-car')
+      const precioTotal = document.querySelector('#precio-total')
 
       document.addEventListener('DOMContentLoaded',()=>{
             carShopping = JSON.parse(localStorage.getItem('carrito')) || []
@@ -225,13 +226,38 @@
       })
 
       
+/*
+      function addProductCard(id) {
 
+        
+
+        const itemProduct = productos.find(prod => prod.id===id)
+        carShopping.push(itemProduct) 
+        
+        
+        mostrarProductosCarShopping()
+      } */
 
       function addProductCard(id) {
 
-        const itemProduct = productos.find(prod => prod.id===id)
-        carShopping.push(itemProduct)
+        const existe = carShopping.some(prod => prod.id ===id)
+       // let producSelected = carShopping.find(productos => productos.id===id)
+
+        if (existe) {
+          
+          let index = carShopping.indexOf(producSelected)
+          carShopping[index].quantitySelected++
+        
+       
+        } else {
+
+          const item = productos.find(item => item.id===id)
+          item.quantitySelected = 1
+          carShopping.push(item)
+           
+        }
         mostrarProductosCarShopping()
+       console.log(carShopping);
       }
 
 
@@ -275,8 +301,19 @@
 
         })
 
+        if (carShopping.length===0) {
+
+         layoutCarShopping.innerHTML = `
+         <figure id="imagen-car-shopping" class="imag-shopping">
+               <img src="./assets/images/empty-cart.png" alt="">
+         </figure> ` 
+        }
+        
+
         //Contador 
         cantidadProduCar.textContent = carShopping.length
+
+        precioTotal.textContent = 'price * carShopping.length'
         
         guardarStorage()
       }
@@ -299,25 +336,37 @@
       /* -------- ADD PRODUCTS TO CAR------- */
 
       /*
-      const productoEnElCar = []
-      function addCarProduct(itemId) {
 
-        let producSelected = productoEnElCar.find(productos => productos.id===itemId)
+
+      function addProductCard(id) {
+
+        const itemProduct = productos.find(prod => prod.id===id)
+        carShopping.push(itemProduct)
+        mostrarProductosCarShopping()
+      }
+
+
+
+
+      const productoEnElCar = []
+      function addProductCard(id) {
+
+        let producSelected = carShopping.find(productos => productos.id===itemId)
 
         if (producSelected) {
           
-          let index = productoEnElCar.indexOf(producSelected)
-          productoEnElCar[index].quantitySelected++
+          let index = carShopping.indexOf(producSelected)
+          carShopping[index].quantitySelected++
 
         } else {
 
           const item = productsItem.find(item => item.id===itemId)
           item.quantitySelected = 1
-          productoEnElCar.push(item)
+          carShopping.push(item)
         }
         
-        productosAddCarShopping(productoEnElCar)
-        console.log(productoEnElCar);
+        productosAddCarShopping(carShopping)
+        console.log(carShopping);
       }*/
 
 
