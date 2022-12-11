@@ -195,9 +195,13 @@ let carShopping = []
 
 const containerProdructos = document.querySelector('#container-productos')
 const cantidadProduCar = document.querySelector('#cantidad-produc-car')
-let precioTotal = document.querySelector('#precio-total')
 
-let total = 0
+const containerPrecioFinal = document.querySelector('.container-precios-final')
+let precioTotal = document.querySelector('#precio-total')
+let totalProductos = document.querySelector('#count-items')
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   carShopping = JSON.parse(localStorage.getItem('carrito')) || []
@@ -246,8 +250,12 @@ function addProductCard(id) {
   //const existe = carShopping.some(prod => prod.id ===id)
   const existe = carShopping.find(prod => prod.id === id)
   if (existe) {
-    let index = carShopping.indexOf(existe)
-    carShopping[index].quantitySelected++
+
+    if (existe.quantity !== existe.quantitySelected) {
+          let index = carShopping.indexOf(existe)
+          carShopping[index].quantitySelected++
+    }
+    
     // carShopping[index].quantitySelected++
   } else {
     const item = productos.find(item => item.id === id)
@@ -286,10 +294,10 @@ const mostrarProductosCarShopping = () => {
                   <h6 class="stock-product-card-shopp">Stock ${quantity}</h6>
                   <h3 class="precio-product-card-shopp">$.${price}.00</h3> 
               </div>
-              <h3 class="sub-total-produc"></h3>
+              <h3 class="sub-total-produc">Sub-total $${quantitySelected*price}.00</h3>
               <div class="container-cant-produc">
                   <button id="${id}" class="btn-cantidad btn-menos">-</button>
-                  <h3 class="unidad-produc">${quantitySelected}</h3>
+                  <h3 class="unidad-produc">${quantitySelected} Units</h3>
                   <button id="${id}" class="btn-cantidad btn-mas">+</button>
               </div>
           </article>
@@ -300,16 +308,19 @@ const mostrarProductosCarShopping = () => {
 
     layoutCarShopping.innerHTML += fragmentCarShopping
 
-    getTotal()
+    
     
   })
 
   if (carShopping.length === 0) {
 
+    containerPrecioFinal.classList.add('is-invisible')
     layoutCarShopping.innerHTML = `
          <figure id="imagen-car-shopping" class="imag-shopping">
                <img src="./assets/images/empty-cart.png" alt="">
          </figure> `
+  }else{
+    containerPrecioFinal.classList.remove('is-invisible')
   }
 
 
@@ -317,6 +328,10 @@ const mostrarProductosCarShopping = () => {
   cantidadProduCar.textContent = carShopping.length
 
   btnAumentarCantadadProducto()
+  btnDismiCantadadProducto()
+
+  getTotal()
+    totalUnidadProductos()
 
   guardarStorage()
 }
@@ -327,52 +342,78 @@ function getTotal() {
     sumaTotal = sum + item.quantitySelected*item.price
     return sumaTotal
   },0)
-  precioTotal.innerText = `$${total}.00`
+  precioTotal.innerText = `Total $${total}.00`
 }
 
+function totalUnidadProductos() {
+  let sumaUnidades = 0
+
+  let totalProduc = carShopping.reduce((suma, prod) =>{
+    sumaUnidades = suma + prod.quantitySelected
+    return sumaUnidades
+  },0)
+
+  totalProductos.innerText = `${totalProduc} Products`
+  
+}
 
 
 /////Me qude aqui
 
 
 
-function btnAumentarCantadadProducto() {
-  let btnMas = document.querySelectorAll('.btn-menos')
-  btnMas = [...btnMas]
+function btnDismiCantadadProducto() {
+  let unidadProduc = document.querySelector('.unidad-produc')
+  let btnDism = document.querySelectorAll('.btn-menos')
+  btnDism = [...btnDism]
     
-  btnMas.forEach(btmenos =>{
+  btnDism.forEach(btmenos =>{
     btmenos.addEventListener('click', e =>{
-      const idBtnmas = parseInt(e.target.id)
-      let cantidadItem =parseInt(e.target.nextElementSibling.innerText)
-
-      let productoFiltrado = carShopping.find(prod => prod.id === idBtnmas)
-    
-      if (productoFiltrado.id==idBtnmas && productoFiltrado.quantitySelected>0) {
-         productoFiltrado.quantitySelected = cantidadItem       
-      }
+      const idBtndismi = parseInt(e.target.id)
+      let productoFiltrado = carShopping.find(prod => prod.id === idBtndismi)
       
-  
-
-      console.log(productoFiltrado);
-
+      if (productoFiltrado && productoFiltrado.quantitySelected>0) {
+        productoFiltrado.quantitySelected--
+        unidadProduc.textContent = `${productoFiltrado.quantitySelected} units`
+        mostrarProductosCarShopping()
+      }
+      if (productoFiltrado.quantitySelected===0) {
+        carShopping = carShopping.filter(prod => prod.id !== idBtndismi)
+        mostrarProductosCarShopping()
+      }
       getTotal()
+      
+      guardarStorage()
       
     })
   
   })
 }
 
-
-
-
-//ME QUEDE AQUI ---- 9/12/22
-let contadorS = 1
-function btnDismin() {
-
+function btnAumentarCantadadProducto() {
+  let unidadProduc = document.querySelector('.unidad-produc')
+  let btnMas = document.querySelectorAll('.btn-mas')
+  btnMas = [...btnMas]
+    
+  btnMas.forEach(btnmas =>{
+    btnmas.addEventListener('click', e =>{
+     // let contador = parseInt(e.target.parentElement.childNodes[3].innerText);
+      const idBtnmas = parseInt(e.target.id)
+      let productoFiltrado = carShopping.find(prod => prod.id === idBtnmas)
+      
+      if (productoFiltrado && productoFiltrado.quantity !==productoFiltrado.quantitySelected) {
+        productoFiltrado.quantitySelected++
+        unidadProduc.textContent = `${productoFiltrado.quantitySelected} units`
+        mostrarProductosCarShopping()
+      }
+          
+      getTotal()
+      
+      guardarStorage()
+      
+    })
   
-  
-
-
+  })
 }
 
 

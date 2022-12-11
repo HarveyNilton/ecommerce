@@ -295,6 +295,9 @@ div.position-cero{
     font-size: 4.5vmin ;
 }
 
+.is-invisible{
+    display: none;
+}
 
 .container-precio{
     display: flex;
