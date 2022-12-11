@@ -30,7 +30,6 @@ body{
     font-family: var(--body-font);
     background: var(--body-color);
 
-  
   }
 
 
@@ -48,6 +47,16 @@ body{
       --border-color: hsl(0, 0%, 20%);
   }
 
+
+  .fondo-transparente{
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: #30302f50;
+    transition: all 0.5s linear;
+   
+  }
 
   .load{
     background: white;
@@ -281,6 +290,8 @@ body{
     padding: 10px;
     transition: 0.5s linear;
     background: var(--container-color);
+     
+  
 }
 div.position-cero{
     right: 0;

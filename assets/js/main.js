@@ -59,6 +59,7 @@ const btnThemaDark = document.getElementById('btn-theme-luna')
 const btnCarShopping = document.getElementById('btn-car-shopping')
 const containerCarShopping = document.getElementById('container-car-shopping')
 const btnCloseCarShopping = document.getElementById('btn-car-shopping-close')
+const fondoTransparente = document.querySelector('#fondoTrans')
 
 const darkThemeChange = () => {
   body.classList.toggle('dark')
@@ -69,8 +70,13 @@ const darkThemeChange = () => {
 btnThemeSun.addEventListener('click', () => darkThemeChange())
 btnThemaDark.addEventListener('click', () => darkThemeChange())
 
-btnCarShopping.addEventListener('click', () => containerCarShopping.classList.add('position-cero'))
-btnCloseCarShopping.addEventListener('click', () => containerCarShopping.classList.remove('position-cero'))
+btnCarShopping.addEventListener('click', () => {
+  containerCarShopping.classList.add('position-cero')
+  fondoTransparente.classList.add('fondo-transparente')
+})
+btnCloseCarShopping.addEventListener('click', () => {
+  fondoTransparente.classList.remove('fondo-transparente')
+  containerCarShopping.classList.remove('position-cero')})
 
 
 // Home
